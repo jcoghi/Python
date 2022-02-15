@@ -27,6 +27,7 @@ def calcular_primeiro_digito(cpf_inicio):
         cpf_primeiro_digito = cpf_primeiro_digito % 11
         return str(cpf_primeiro_digito)
 
+
 def calcular_segundo_digito(primeiro_digito):
     cpf_segundo_digito = 0
     for n in range(0, 10):
