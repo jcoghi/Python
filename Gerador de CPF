@@ -22,7 +22,7 @@ def calcular_primeiro_digito(cpf_inicio):
         cpf_primeiro_digito = int(cpf_inicio[n]) * (n+1) + cpf_primeiro_digito
     if cpf_primeiro_digito % 11 == 10:
         cpf_primeiro_digito = 0
-        return cpf_primeiro_digito
+        return str(cpf_primeiro_digito)
     else:
         cpf_primeiro_digito = cpf_primeiro_digito % 11
         return str(cpf_primeiro_digito)
