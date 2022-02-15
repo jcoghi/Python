@@ -1,0 +1,46 @@
+import random
+
+print("password Generator with Python")
+
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q' ,'r', 's', 't', 'u', 'v', 'w', 'x' ,'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q' ,'R', 'S', 'T', 'U', 'V', 'W', 'X' ,'Y', 'Z']
+
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+numbers = ['0','1','2','3','4','5','6','7','8','9']
+
+num_letters = int(input("How many letters would you like in your password?\n "))
+num_numbers = int(input("How many numbers would you like in your password?\n "))
+num_symbols = int(input("How many symbols would you like in your password?\n "))
+choose = int(input('''What type of password do you want to create?
+\n1 for "Letters + Numbers + Symbols" Password
+\n2 for Random Password
+\nSelect: '''))
+
+list = ""
+for n in range(1, num_letters+1):
+  list = list + letters[random.randint(0, len(letters)-1)] 
+for n in range(1, num_numbers+1):
+  list = list + numbers[random.randint(0, len(numbers)-1)]
+for n in range(1, num_symbols+1):
+  list += symbols[random.randint(0, len(symbols)-1)]
+
+if (choose == 1):
+  print(f'Password is: {list}')
+
+elif (choose == 2):
+  pass_ran =""
+  secret =[]
+
+  for n in range(0, len(list)):
+    secret.extend(list[n])
+
+  counter = 0
+  for n in range(0, len(secret)):
+    counter = random.randint(0, len(secret)-1)
+    pass_ran = pass_ran + secret[counter]
+    secret.remove(secret[counter])
+  print(f'Password is: {pass_ran}')
+  
+else:
+  print("Option unvaliable. Please try again!")
+
