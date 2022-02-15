@@ -1,0 +1,20 @@
+def data_input():
+  numbers_list = []
+  count = 0
+  while True:
+    number = input(f'Entre com o {count+1}° número: ')
+    number = number.replace(',','.')
+    numbers_list.append(int(number))
+    count += 1
+    test = True
+    while test:
+        choice = input('Do you want to add another number? [Y/N] ').casefold()
+        if choice == 'y':
+            test = False
+        elif choice == 'n':
+          return print(f'The sum between {numbers_list} is {sum(numbers_list)}')
+        else:
+            print('Error, please enter Y for "Yes" or N for "No" ')
+
+
+data_input()
