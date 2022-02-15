@@ -1,0 +1,33 @@
+print("Bonus calculator")
+print('''In this program you must inform:
+
+- Sales target
+- Salary bonus for goal achieved
+- Number of sellers
+- Name of the sellers
+- Salesman's salary
+- Amount of sales made by each seller.
+
+As a respot, the program will inform the new salary of the seller who reached the goal.
+''')
+
+list_name = []
+list_sales = []
+list_salaries = []
+
+sales_goal = float(input('Enter the sales goal: '))
+sales_members = int(input('Enter the number of sellers: '))
+bonus_apllied = float(input('Enter with the bonus (%) to be applied: '))
+
+for count in range(1, sales_members+1):
+  list_name.append(input(f"Enter the seller's name {count}: "))
+  list_salaries.append(input(f"Enter the seller's salary {list_name[count-1]}: "))
+  list_sales.append(int(input(f'Enter the quantity of item sold by {list_name[count-1]}: ')))
+
+
+for count in range(0, len(list_name)):
+  if list_sales[count] >= sales_goal:
+    new_salary = round((1 + bonus_apllied/100) * float(list_salaries[count]),2)
+    print(f'\n{list_name[count]} will receive {bonus_apllied}% bonus raise. The new salary is: ${new_salary}')
+  else:
+    print(f'\n{list_name[count]} has not reached the sales target. Therefore {list_name[count]} will not receive bonuses.')
