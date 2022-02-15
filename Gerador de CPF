@@ -1,0 +1,46 @@
+from random import randint
+
+def criar_nono_numero(estado):
+    nono_digito = (['RS'], ['DF', 'GO', 'MT', 'MTS', 'TO'], ['AC', 'AP', 'AM', 'PA', 'RD', 'RO'], ['CE', 'MA', 'PI'], ['AL', 'Pb', 'PE', 'RN'], ['BA', 'SE'], ['MG'], ['ES', 'RJ'], ['SP'], ['PR', 'SC'])
+    for chave, valor in enumerate(nono_digito):
+        if estado in valor:
+            return chave
+        else:
+            pass
+
+
+def criar_oito_random():
+    oito_digitos =""
+    for n in range(0, 8):
+        oito_digitos = oito_digitos + str(randint(0,9))
+    return oito_digitos
+
+
+def calcular_primeiro_digito(cpf_inicio):
+    cpf_primeiro_digito = 0
+    for n in range(0, 9):
+        cpf_primeiro_digito = int(cpf_inicio[n]) * (n+1) + cpf_primeiro_digito
+    if cpf_primeiro_digito % 11 == 10:
+        cpf_primeiro_digito = 0
+        return cpf_primeiro_digito
+    else:
+        cpf_primeiro_digito = cpf_primeiro_digito % 11
+        return str(cpf_primeiro_digito)
+
+def calcular_segundo_digito(primeiro_digito):
+    cpf_segundo_digito = 0
+    for n in range(0, 10):
+        cpf_segundo_digito = int(primeiro_digito[n]) * (n) + cpf_segundo_digito
+    if cpf_segundo_digito % 11 == 10:
+        cpf_segundo_digito = 0
+        return str(cpf_segundo_digito)
+    else:
+        cpf_segundo_digito = cpf_segundo_digito % 11
+        return str(cpf_segundo_digito)
+
+
+estado = input('Entre com a sigla do Estado desejado: ').upper()
+cpf_inicio = criar_oito_random() + str(criar_nono_numero(estado))
+primeiro_digito = cpf_inicio + calcular_primeiro_digito(cpf_inicio)
+segundo_digito = primeiro_digito + calcular_segundo_digito(primeiro_digito)
+print(f'O CPF criado é {segundo_digito[0]}{segundo_digito[1]}{segundo_digito[2]}.{segundo_digito[3]}{segundo_digito[4]}{segundo_digito[5]}.{segundo_digito[6]}{segundo_digito[7]}{segundo_digito[8]}-{segundo_digito[9]}{segundo_digito[10]}')
